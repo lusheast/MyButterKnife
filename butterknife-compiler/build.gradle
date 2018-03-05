@@ -1,0 +1,19 @@
+
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //该库可以更好地辅助我们完成自定义注解处理器的设计
+    compile 'com.google.auto.service:auto-service:1.0-rc3'
+    //该库用来动态生成java代码的
+    compile 'com.squareup:javapoet:1.8.0'
+    implementation project(':butterknife-annotations')
+}
+
+
+tasks.withType(JavaCompile){
+    options.encoding = "UTF-8"
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
